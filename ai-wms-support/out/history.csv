@@ -1,0 +1,4 @@
+run_time,ou_name,backend,stuck_lpn,aging_waves,cloud_stuck_tasks,fusion_exceptions,total_issues,snow_incident_id,snow_incident_number
+2025-11-09 11:18:30.458672,India_OU,EBS,2,2,0,0,4,,
+2025-11-09 11:18:30.458672,US_OU,SAAS,0,0,3,1,4,,
+2025-11-09 11:18:30.458672,EU_OU,SAAS,0,0,0,1,1,,
