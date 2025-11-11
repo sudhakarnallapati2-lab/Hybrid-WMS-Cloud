@@ -11,12 +11,18 @@ ALGO = "HS256"
 ACCESS_MIN = int(os.getenv("JWT_ACCESS_MIN", "60"))
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/auth/login")
-pwd_ctx = CryptContext(schemes=["bcrypt"], deprecated="auto")
+pwd_ctx = CryptContext(
+    schemes=["bcrypt"],
+    deprecated="auto",
+    bcrypt__rounds=12,
+    bcrypt__ident="2b"
+)
+
 
 # Demo users
-_USERS = {
-    "operator1": {"password": pwd_ctx.hash("op@123"), "roles": ["operator"]},
-    "support1":  {"password": pwd_ctx.hash("sup@123"), "roles": ["support","operator"]},
+users_db = {
+    "operator1": {"password": "$2b$12$W9eJGvD8YjU.0FqJjEqH1eWMEXAMPLEHASH12345678901234567890", "roles": ["operator"]},
+    "support1": {"password": "$2b$12$Y6t98Nwz2F0sHUI9kVx0MeEXAMPLEHASH12345678901234567890", "roles": ["support"]},
 }
 
 def create_token(sub: str, roles: List[str]):
